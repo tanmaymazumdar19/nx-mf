@@ -1,0 +1,9 @@
+{
+  "name": "nx-mf",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/tanmaymazumdar19/nx-mf",
+  "author": "Tanmay Mazumdar <115444069+tanmaymazumdar19@users.noreply.github.com>",
+  "license": "MIT",
+  "packageManager": "yarn@4.0.2"
+}
