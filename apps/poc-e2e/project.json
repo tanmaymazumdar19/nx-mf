@@ -1,0 +1,30 @@
+{
+  "name": "poc-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/poc-e2e/src",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/poc-e2e/cypress.config.ts",
+        "testingType": "e2e",
+        "devServerTarget": "poc:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "poc:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "poc:serve-static"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "implicitDependencies": ["poc"],
+  "tags": []
+}
