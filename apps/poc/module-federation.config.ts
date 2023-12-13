@@ -1,4 +1,4 @@
-import { ModuleFederationConfig } from '@nx/webpack';
+import { ModuleFederationConfig } from '@nx/webpack'
 
 const config: ModuleFederationConfig = {
   name: 'poc',
@@ -6,6 +6,6 @@ const config: ModuleFederationConfig = {
   exposes: {
     './Module': './src/remote-entry.ts',
   },
-};
+}
 
-export default config;
+export default config

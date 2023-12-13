@@ -1,4 +1,4 @@
-import { ModuleFederationConfig } from '@nx/webpack';
+import { ModuleFederationConfig } from '@nx/webpack'
 
 const config: ModuleFederationConfig = {
   name: 'web',
@@ -15,6 +15,6 @@ const config: ModuleFederationConfig = {
    *
    */
   remotes: ['org', 'team', 'poc'],
-};
+}
 
-export default config;
+export default config

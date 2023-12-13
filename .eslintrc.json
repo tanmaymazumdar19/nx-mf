@@ -1,10 +1,19 @@
 {
   "root": true,
-  "ignorePatterns": ["**/*"],
-  "plugins": ["@nx"],
+  "ignorePatterns": [
+    "**/*"
+  ],
+  "plugins": [
+    "@nx"
+  ],
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "files": [
+        "*.ts",
+        "*.tsx",
+        "*.js",
+        "*.jsx"
+      ],
       "rules": {
         "@nx/enforce-module-boundaries": [
           "error",
@@ -14,23 +23,41 @@
             "depConstraints": [
               {
                 "sourceTag": "scope:config",
-                "onlyDependOnLibsWithTags": ["scope:config"]
+                "onlyDependOnLibsWithTags": [
+                  "scope:config"
+                ]
               },
               {
                 "sourceTag": "scope:fetch",
-                "onlyDependOnLibsWithTags": ["scope:fetch"]
+                "onlyDependOnLibsWithTags": [
+                  "scope:fetch"
+                ]
               },
               {
                 "sourceTag": "scope:shared",
-                "onlyDependOnLibsWithTags": ["scope:config", "scope:shared"]
+                "onlyDependOnLibsWithTags": [
+                  "scope:config",
+                  "scope:shared"
+                ]
               },
               {
                 "sourceTag": "feature",
-                "onlyDependOnLibsWithTags": ["scope:config", "scope:fetch", "scope:shared", "feature"]
+                "onlyDependOnLibsWithTags": [
+                  "scope:config",
+                  "scope:fetch",
+                  "scope:shared",
+                  "feature"
+                ]
               },
               {
                 "sourceTag": "shell",
-                "onlyDependOnLibsWithTags": ["scope:config", "scope:fetch", "scope:shared", "feature", "shell"]
+                "onlyDependOnLibsWithTags": [
+                  "scope:config",
+                  "scope:fetch",
+                  "scope:shared",
+                  "feature",
+                  "shell"
+                ]
               }
             ]
           }
@@ -38,13 +65,64 @@
       }
     },
     {
-      "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nx/typescript"],
-      "rules": {}
+      "files": [
+        "*.ts",
+        "*.tsx"
+      ],
+      "extends": [
+        "plugin:@nx/typescript",
+        "airbnb-base",
+        "airbnb-typescript",
+        "plugin:unicorn/all",
+        "prettier",
+        "plugin:sonarjs/recommended"
+      ],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "project": [
+          "./tsconfig.base.json"
+        ]
+      },
+      "plugins": [
+        "jsdoc"
+      ],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "error",
+        "@typescript-eslint/no-unsafe-assignment": "off",
+        "@typescript-eslint/no-unsafe-call": "off",
+        "@typescript-eslint/no-unsafe-member-access": "warn",
+        "@typescript-eslint/no-unsafe-return": "off",
+        "import/extensions": "off",
+        "import/no-extraneous-dependencies": "warn",
+        "no-console": "error",
+        "no-underscore-dangle": "warn",
+        "react/destructuring-assignment": "off",
+        "react/forbid-component-props": "off",
+        "react/jsx-props-no-spreading": "off",
+        "react/jsx-max-depth": [
+          2,
+          {
+            "max": 5
+          }
+        ],
+        "react/require-default-props": "off",
+        "react-hooks/exhaustive-deps": "off",
+        "react-refresh/only-export-components": "off",
+        "prefer-destructuring": "off",
+        "unicorn/new-for-builtins": "off",
+        "unicorn/no-new-array": "off",
+        "unicorn/prevent-abbreviations": "off",
+        "unicorn/switch-case-braces": "off"
+      }
     },
     {
-      "files": ["*.js", "*.jsx"],
-      "extends": ["plugin:@nx/javascript"],
+      "files": [
+        "*.js",
+        "*.jsx"
+      ],
+      "extends": [
+        "plugin:@nx/javascript"
+      ],
       "rules": {}
     }
   ]

@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@nx/webpack:webpack",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "defaultConfiguration": "production",
       "options": {
         "compiler": "swc",
@@ -15,10 +17,16 @@
         "baseHref": "/",
         "main": "apps/web/src/main.ts",
         "tsConfig": "apps/web/tsconfig.app.json",
-        "assets": ["apps/web/src/favicon.ico", "apps/web/src/assets"],
-        "styles": ["apps/web/src/styles.css"],
+        "assets": [
+          "apps/web/src/favicon.ico",
+          "apps/web/src/assets"
+        ],
+        "styles": [
+          "apps/web/src/styles.css"
+        ],
         "scripts": [],
-        "webpackConfig": "apps/web/webpack.config.ts"
+        "webpackConfig": "apps/web/webpack.config.ts",
+        "postcssConfig": "apps/web/postcss.config.js"
       },
       "configurations": {
         "development": {
@@ -64,7 +72,9 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
+      "outputs": [
+        "{options.outputFile}"
+      ]
     },
     "serve-static": {
       "executor": "@nx/web:file-server",
@@ -84,5 +94,11 @@
       }
     }
   },
-  "tags": ["shell"]
+  "tags": [
+    "shell"
+  ],
+  "implicitDependencies": [
+    "config"
+  ],
+  "onlyDependOnLibsWithTags": ["scope:config"]
 }

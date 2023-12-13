@@ -1,14 +1,12 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.css';
+import type { JSX } from 'react'
 
-import NxWelcome from './nx-welcome';
+import NxWelcome from './nx-welcome'
 
-export function App() {
+export default function App(): JSX.Element {
   return (
-    <div>
-      <NxWelcome title="org" />
-    </div>
-  );
+    <>
+      <p>Our Org Tanmay Mazumdar</p>
+      <NxWelcome title='org' />
+    </>
+  )
 }
-
-export default App;

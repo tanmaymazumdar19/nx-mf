@@ -1,8 +1,8 @@
-import { composePlugins, withNx } from '@nx/webpack';
-import { withReact } from '@nx/react';
-import { withModuleFederation } from '@nx/react/module-federation';
+import { composePlugins, withNx } from '@nx/webpack'
+import { withReact } from '@nx/react'
+import { withModuleFederation } from '@nx/react/module-federation'
 
-import baseConfig from './module-federation.config';
+import baseConfig from './module-federation.config'
 
 const prodConfig = {
   ...baseConfig,
@@ -28,11 +28,7 @@ const prodConfig = {
     ['team', 'http://localhost:4202/'],
     ['poc', 'http://localhost:4203/'],
   ],
-};
+}
 
 // Nx plugins for webpack to build config object from Nx options and context.
-export default composePlugins(
-  withNx(),
-  withReact(),
-  withModuleFederation(prodConfig)
-);
+export default composePlugins(withNx(), withReact(), withModuleFederation(prodConfig))

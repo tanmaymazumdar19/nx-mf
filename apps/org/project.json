@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@nx/webpack:webpack",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "defaultConfiguration": "production",
       "options": {
         "compiler": "babel",
@@ -15,8 +17,13 @@
         "baseHref": "/",
         "main": "apps/org/src/main.ts",
         "tsConfig": "apps/org/tsconfig.app.json",
-        "assets": ["apps/org/src/favicon.ico", "apps/org/src/assets"],
-        "styles": ["apps/org/src/styles.css"],
+        "assets": [
+          "apps/org/src/favicon.ico",
+          "apps/org/src/assets"
+        ],
+        "styles": [
+          "apps/org/src/styles.css"
+        ],
         "scripts": [],
         "webpackConfig": "apps/org/webpack.config.ts"
       },
@@ -50,7 +57,7 @@
       "options": {
         "buildTarget": "org:build",
         "hmr": true,
-        "port": 4201
+        "port": 4300
       },
       "configurations": {
         "development": {
@@ -64,7 +71,9 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
+      "outputs": [
+        "{options.outputFile}"
+      ]
     },
     "serve-static": {
       "executor": "@nx/web:file-server",
@@ -84,5 +93,7 @@
       }
     }
   },
-  "tags": ["feature"]
+  "tags": [
+    "feature"
+  ]
 }
