@@ -1,0 +1,27 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "config": ["libs/config/src/index.ts"],
+      "fetch": ["libs/fetch/src/index.ts"],
+      "org/Module": ["apps/org/src/remote-entry.ts"],
+      "poc/Module": ["apps/poc/src/remote-entry.ts"],
+      "team/Module": ["apps/team/src/remote-entry.ts"],
+      "ui": ["libs/ui/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

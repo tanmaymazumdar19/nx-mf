@@ -1,0 +1,88 @@
+{
+  "name": "poc",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/poc/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/poc",
+        "index": "apps/poc/src/index.html",
+        "baseHref": "/",
+        "main": "apps/poc/src/main.ts",
+        "tsConfig": "apps/poc/tsconfig.app.json",
+        "assets": ["apps/poc/src/favicon.ico", "apps/poc/src/assets"],
+        "styles": ["apps/poc/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "apps/poc/webpack.config.ts"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/poc/src/environments/environment.ts",
+              "with": "apps/poc/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "webpackConfig": "apps/poc/webpack.config.prod.ts"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/react:module-federation-dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "poc:build",
+        "hmr": true,
+        "port": 4203
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "poc:build:development"
+        },
+        "production": {
+          "buildTarget": "poc:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "defaultConfiguration": "production",
+      "options": {
+        "buildTarget": "poc:build",
+        "watch": false,
+        "port": 4203
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "poc:build:development"
+        },
+        "production": {
+          "buildTarget": "poc:build:production"
+        }
+      }
+    }
+  },
+  "tags": ["feature"]
+}

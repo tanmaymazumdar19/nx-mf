@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "nrwl.angular-console",
+    "eamodio.gitlens",
+    "sonarsource.sonarlint-vscode",
+    "bradlc.vscode-tailwindcss"
+  ]
+}

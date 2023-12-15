@@ -1,0 +1,104 @@
+{
+  "name": "web",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/web/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "swc",
+        "outputPath": "dist/apps/web",
+        "index": "apps/web/src/index.html",
+        "baseHref": "/",
+        "main": "apps/web/src/main.ts",
+        "tsConfig": "apps/web/tsconfig.app.json",
+        "assets": [
+          "apps/web/src/favicon.ico",
+          "apps/web/src/assets"
+        ],
+        "styles": [
+          "apps/web/src/styles.css"
+        ],
+        "scripts": [],
+        "webpackConfig": "apps/web/webpack.config.ts",
+        "postcssConfig": "apps/web/postcss.config.js"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/web/src/environments/environment.ts",
+              "with": "apps/web/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "webpackConfig": "apps/web/webpack.config.prod.ts"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/react:module-federation-dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "web:build",
+        "hmr": true,
+        "port": 4200
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "web:build:development"
+        },
+        "production": {
+          "buildTarget": "web:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": [
+        "{options.outputFile}"
+      ]
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "defaultConfiguration": "production",
+      "options": {
+        "buildTarget": "web:build",
+        "watch": false,
+        "port": 4200
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "web:build:development"
+        },
+        "production": {
+          "buildTarget": "web:build:production"
+        }
+      }
+    }
+  },
+  "tags": [
+    "shell"
+  ],
+  "implicitDependencies": [
+    "config"
+  ],
+  "onlyDependOnLibsWithTags": ["scope:config"]
+}
